@@ -479,9 +479,9 @@ export default function DiviniaLanding() {
           <Image
             src="/images/logo/skinlux-logo.png"
             alt="Skinlux"
-            width={100}
-            height={28}
-            className="h-5 md:h-6 w-auto"
+            width={160}
+            height={44}
+            className="h-8 md:h-9 w-auto"
           />
           <div className="flex items-center gap-3">
             <a
@@ -1262,9 +1262,9 @@ export default function DiviniaLanding() {
               <Image
                 src="/images/logo/skinlux-logo-white.png"
                 alt="Skinlux"
-                width={120}
-                height={34}
-                className="h-6 w-auto mb-4"
+                width={140}
+                height={40}
+                className="h-7 w-auto mb-4"
               />
               <p className="text-sm text-gray-300">
                 Medical Beauty Studio

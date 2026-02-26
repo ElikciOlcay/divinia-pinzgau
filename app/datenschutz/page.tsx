@@ -19,9 +19,9 @@ export default function DatenschutzPage() {
             <Image
               src="/images/logo/skinlux-logo.png"
               alt="Skinlux"
-              width={100}
-              height={28}
-              className="h-5 md:h-6 w-auto"
+              width={160}
+              height={44}
+              className="h-8 md:h-9 w-auto"
             />
           </Link>
           <Link
