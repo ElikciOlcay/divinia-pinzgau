@@ -1,0 +1,150 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" />
+      <mj-text font-size="14px" color="#333333" line-height="1.6" />
+      <mj-section padding="0" />
+    </mj-attributes>
+    <mj-style>
+      .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #999999; margin-bottom: 4px; }
+      .value { font-size: 16px; color: #111111; font-weight: 400; }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#f5f5f5">
+
+    <!-- Spacer Top -->
+    <mj-section padding="30px 0 0 0" background-color="#f5f5f5">
+      <mj-column>
+        <mj-text align="center" font-size="1px">&nbsp;</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Header -->
+    <mj-section background-color="#000000" padding="32px 40px">
+      <mj-column>
+        <mj-text align="center" color="#ffffff" font-size="18px" font-weight="700" letter-spacing="3px">
+          SKINLUX
+        </mj-text>
+        <mj-text align="center" color="rgba(255,255,255,0.5)" font-size="10px" letter-spacing="2px" padding-top="4px">
+          MEDICAL BEAUTY
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Title Bar -->
+    <mj-section background-color="#ffffff" padding="32px 40px 24px 40px">
+      <mj-column>
+        <mj-text font-size="11px" color="#999999" letter-spacing="2px" text-transform="uppercase" padding-bottom="8px">
+          Neue Anfrage
+        </mj-text>
+        <mj-text font-size="26px" color="#111111" font-weight="400" line-height="1.2">
+          Body Shaping Beratung
+        </mj-text>
+        <mj-text font-size="13px" color="#999999" padding-top="8px">
+          Eingegangen am {{datum}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Divider -->
+    <mj-section background-color="#ffffff" padding="0 40px">
+      <mj-column>
+        <mj-divider border-color="#f0f0f0" border-width="1px" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Kundendaten -->
+    <mj-section background-color="#ffffff" padding="24px 40px 8px 40px">
+      <mj-column>
+        <mj-text css-class="label" font-size="11px" color="#999999" letter-spacing="2px" text-transform="uppercase">
+          Name
+        </mj-text>
+        <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
+          {{kundenName}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" padding="0 40px">
+      <mj-column>
+        <mj-text css-class="label" font-size="11px" color="#999999" letter-spacing="2px" text-transform="uppercase">
+          E-Mail
+        </mj-text>
+        <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
+          <a href="mailto:{{kundenEmail}}" style="color: #111111; text-decoration: none;">{{kundenEmail}}</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" padding="0 40px">
+      <mj-column>
+        <mj-text css-class="label" font-size="11px" color="#999999" letter-spacing="2px" text-transform="uppercase">
+          Telefon
+        </mj-text>
+        <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
+          <a href="tel:{{kundenTelefon}}" style="color: #111111; text-decoration: none;">{{kundenTelefon}}</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" padding="0 40px">
+      <mj-column>
+        <mj-text css-class="label" font-size="11px" color="#999999" letter-spacing="2px" text-transform="uppercase">
+          Interesse
+        </mj-text>
+        <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
+          {{kundenInteresse}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Divider -->
+    <mj-section background-color="#ffffff" padding="0 40px">
+      <mj-column>
+        <mj-divider border-color="#f0f0f0" border-width="1px" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Nachricht -->
+    <mj-section background-color="#ffffff" padding="24px 40px 32px 40px">
+      <mj-column>
+        <mj-text css-class="label" font-size="11px" color="#999999" letter-spacing="2px" text-transform="uppercase">
+          Nachricht
+        </mj-text>
+        <mj-text font-size="15px" color="#333333" padding-top="8px" line-height="1.7">
+          {{kundenNachricht}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- CTA -->
+    <mj-section background-color="#ffffff" padding="0 40px 32px 40px">
+      <mj-column>
+        <mj-button background-color="#000000" color="#ffffff" font-size="11px" letter-spacing="2px" text-transform="uppercase" inner-padding="16px 32px" border-radius="0" href="mailto:{{kundenEmail}}?subject=Deine Body Shaping Anfrage bei Skinlux">
+          Kundin kontaktieren
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section background-color="#f5f5f5" padding="24px 40px">
+      <mj-column>
+        <mj-text align="center" font-size="11px" color="#999999" line-height="1.6">
+          Diese E-Mail wurde automatisch von bodyshaping.skinlux.at gesendet.
+        </mj-text>
+        <mj-text align="center" font-size="11px" color="#cccccc" padding-top="4px">
+          Skinlux Medical Beauty Studio Pinzgau
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Spacer Bottom -->
+    <mj-section padding="0 0 30px 0" background-color="#f5f5f5">
+      <mj-column>
+        <mj-text align="center" font-size="1px">&nbsp;</mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>

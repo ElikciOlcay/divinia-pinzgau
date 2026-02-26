@@ -19,10 +19,8 @@ import {
   Shield,
   Sparkles,
 } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, FormEvent } from "react";
 
-const BOOKING_URL =
-  "https://connect.shore.com/bookings/skinlux-pinzgau/services?locale=de";
 const PHONE = "+436644568454";
 const PHONE_DISPLAY = "+43 664 456 8454";
 
@@ -97,16 +95,186 @@ const faq = [
   },
 ];
 
+function scrollToForm() {
+  document.getElementById("anfrage")?.scrollIntoView({ behavior: "smooth" });
+}
+
 function StickyCtaButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <a
-      href={BOOKING_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 text-[11px] md:text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:bg-gray-900 w-full sm:w-auto ${className}`}
+    <button
+      onClick={scrollToForm}
+      className={`inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 text-[11px] md:text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:bg-gray-900 w-full sm:w-auto cursor-pointer ${className}`}
     >
       {children}
-    </a>
+    </button>
+  );
+}
+
+function AnfrageFormular() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    interesse: "Body Shaping Beratung",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/anfrage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || "Fehler beim Senden.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      setFormData({ name: "", email: "", phone: "", interesse: "Body Shaping Beratung", message: "" });
+    } catch {
+      setErrorMsg("Verbindungsfehler. Bitte versuche es erneut.");
+      setStatus("error");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center py-10"
+      >
+        <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Check className="w-8 h-8 text-green-600" />
+        </div>
+        <h3
+          className="text-2xl md:text-3xl mb-3"
+          style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+        >
+          Anfrage erhalten!
+        </h3>
+        <p className="text-gray-500 max-w-md mx-auto mb-8">
+          Vielen Dank für dein Interesse. Wir melden uns innerhalb von 24 Stunden bei dir, um deinen persönlichen Beratungstermin zu vereinbaren.
+        </p>
+        <button
+          onClick={() => setStatus("idle")}
+          className="text-xs text-gray-400 hover:text-black transition-colors tracking-[0.15em] uppercase cursor-pointer"
+        >
+          Weitere Anfrage senden
+        </button>
+      </motion.div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="name" className="block text-[11px] tracking-[0.15em] uppercase text-gray-500 mb-2">
+            Name *
+          </label>
+          <input
+            id="name"
+            type="text"
+            required
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-black transition-colors"
+            placeholder="Dein vollständiger Name"
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-[11px] tracking-[0.15em] uppercase text-gray-500 mb-2">
+            Telefon *
+          </label>
+          <input
+            id="phone"
+            type="tel"
+            required
+            value={formData.phone}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-black transition-colors"
+            placeholder="+43 664 ..."
+          />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="email" className="block text-[11px] tracking-[0.15em] uppercase text-gray-500 mb-2">
+          E-Mail *
+        </label>
+        <input
+          id="email"
+          type="email"
+          required
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-black transition-colors"
+          placeholder="deine@email.at"
+        />
+      </div>
+      <div>
+        <label htmlFor="interesse" className="block text-[11px] tracking-[0.15em] uppercase text-gray-500 mb-2">
+          Interesse
+        </label>
+        <select
+          id="interesse"
+          value={formData.interesse}
+          onChange={(e) => setFormData({ ...formData, interesse: e.target.value })}
+          className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-black transition-colors appearance-none"
+        >
+          <option>Body Shaping Beratung</option>
+          <option>Einzelbehandlung</option>
+          <option>10er Paket</option>
+          <option>Allgemeine Frage</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="message" className="block text-[11px] tracking-[0.15em] uppercase text-gray-500 mb-2">
+          Nachricht (optional)
+        </label>
+        <textarea
+          id="message"
+          rows={3}
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-black transition-colors resize-none"
+          placeholder="Erzähl uns von deinen Wünschen..."
+        />
+      </div>
+
+      {status === "error" && (
+        <p className="text-sm text-red-600">{errorMsg}</p>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="w-full bg-black text-white py-4.5 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2"
+      >
+        {status === "sending" ? (
+          "Wird gesendet..."
+        ) : (
+          <>
+            Kostenlose Beratung anfragen
+            <ArrowRight className="w-4 h-4" />
+          </>
+        )}
+      </button>
+      <p className="text-[11px] text-gray-400 text-center">
+        Kostenlos &amp; unverbindlich. Wir melden uns innerhalb von 24h.
+      </p>
+    </form>
   );
 }
 
@@ -409,15 +577,13 @@ function EignungsCheck() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <a
-                    href={BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4.5 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-all w-full sm:w-auto"
+                  <button
+                    onClick={scrollToForm}
+                    className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4.5 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-all w-full sm:w-auto cursor-pointer"
                   >
                     {getResult().cta}
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </button>
                   <button
                     onClick={handleReset}
                     className="inline-flex items-center justify-center gap-2 px-8 py-4.5 text-gray-500 border border-gray-200 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-50 transition-all w-full sm:w-auto"
@@ -491,14 +657,12 @@ export default function DiviniaLanding() {
               <Phone className="w-3.5 h-3.5" />
               {PHONE_DISPLAY}
             </a>
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black text-white px-5 py-2 text-[10px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-colors"
+            <button
+              onClick={scrollToForm}
+              className="bg-black text-white px-5 py-2 text-[10px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-colors cursor-pointer"
             >
-              Termin sichern
-            </a>
+              Anfrage senden
+            </button>
           </div>
         </div>
       </header>
@@ -533,15 +697,13 @@ export default function DiviniaLanding() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-8">
-                <a
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4.5 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-all w-full sm:w-auto"
+                <button
+                  onClick={scrollToForm}
+                  className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4.5 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-all w-full sm:w-auto cursor-pointer"
                 >
                   Kostenlose Beratung sichern
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </button>
                 <a
                   href={`tel:${PHONE}`}
                   className="inline-flex items-center justify-center gap-2 px-8 py-4.5 text-gray-600 border border-gray-200 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-50 transition-all w-full sm:w-auto"
@@ -1009,14 +1171,12 @@ export default function DiviniaLanding() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-4 border border-black text-black text-[11px] tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all"
+              <button
+                onClick={scrollToForm}
+                className="block w-full text-center py-4 border border-black text-black text-[11px] tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all cursor-pointer"
               >
                 Termin buchen
-              </a>
+              </button>
             </motion.div>
 
             {/* 10er Paket */}
@@ -1067,15 +1227,13 @@ export default function DiviniaLanding() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-4 bg-white text-black text-[11px] tracking-[0.2em] uppercase hover:bg-gray-100 transition-all"
+              <button
+                onClick={scrollToForm}
+                className="block w-full text-center py-4 bg-white text-black text-[11px] tracking-[0.2em] uppercase hover:bg-gray-100 transition-all cursor-pointer"
               >
                 Beratung vereinbaren
                 <ArrowRight className="w-3.5 h-3.5 inline ml-2" />
-              </a>
+              </button>
             </motion.div>
           </div>
 
@@ -1148,46 +1306,62 @@ export default function DiviniaLanding() {
         </div>
       </section>
 
-      {/* URGENCY + SCARCITY CTA */}
-      <section className="py-16 md:py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="inline-flex items-center gap-2 mb-6 bg-white/10 px-4 py-2 text-[10px] tracking-[0.2em] uppercase">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Limitierte Plätze verfügbar
-            </span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl text-white mb-6">
-              Deine Beratung ist
-              <br />
-              <span className="text-white/50">kostenlos.</span>
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-lg mx-auto mb-10">
-              Unverbindlich. Persönlich. Dein individueller
-              Body-Shaping-Plan für sichtbare Ergebnisse.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-white text-black px-10 py-5 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-100 transition-all w-full sm:w-auto"
+      {/* ANFRAGE-FORMULAR */}
+      <section id="anfrage" className="py-16 md:py-24 bg-gray-50 scroll-mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-flex items-center gap-2 mb-6 bg-white px-4 py-2 text-[10px] tracking-[0.2em] uppercase text-gray-500">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                Kostenlos &amp; unverbindlich
+              </span>
+              <h2
+                className="text-3xl md:text-5xl mb-6"
+                style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
               >
-                Beratungstermin sichern
-                <ArrowRight className="w-4 h-4" />
-              </a>
+                Deine kostenlose
+                <br />
+                <span className="text-gray-300">Beratung wartet.</span>
+              </h2>
+              <p className="text-lg text-gray-500 mb-8 max-w-md leading-relaxed">
+                Schick uns deine Anfrage und wir melden uns persönlich bei dir,
+                um deinen individuellen Body-Shaping-Plan zu besprechen.
+              </p>
+              <div className="space-y-4">
+                {[
+                  { icon: Shield, text: "100% kostenlos und unverbindlich" },
+                  { icon: Clock, text: "Antwort innerhalb von 24 Stunden" },
+                  { icon: Phone, text: "Oder ruf uns direkt an" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-gray-600">
+                    <item.icon className="w-4 h-4 text-black shrink-0" />
+                    <span className="text-sm">{item.text}</span>
+                  </div>
+                ))}
+              </div>
               <a
                 href={`tel:${PHONE}`}
-                className="inline-flex items-center justify-center gap-2 px-8 py-5 text-white/80 border border-white/20 text-[11px] tracking-[0.2em] uppercase hover:bg-white/10 transition-all w-full sm:w-auto"
+                className="inline-flex items-center gap-2 mt-6 text-sm text-black hover:text-gray-600 transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                Jetzt anrufen
+                {PHONE_DISPLAY}
               </a>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-8 md:p-10 shadow-sm"
+            >
+              <AnfrageFormular />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1323,15 +1497,13 @@ export default function DiviniaLanding() {
       {/* MOBILE STICKY CTA BAR */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 safe-area-bottom">
         <div className="flex gap-0">
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 bg-black text-white text-center py-4 text-[11px] tracking-[0.2em] uppercase flex items-center justify-center gap-2"
+          <button
+            onClick={scrollToForm}
+            className="flex-1 bg-black text-white text-center py-4 text-[11px] tracking-[0.2em] uppercase flex items-center justify-center gap-2 cursor-pointer"
           >
-            Termin sichern
+            Anfrage senden
             <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+          </button>
           <a
             href={`tel:${PHONE}`}
             className="bg-white text-black px-5 flex items-center justify-center border-l border-gray-100"

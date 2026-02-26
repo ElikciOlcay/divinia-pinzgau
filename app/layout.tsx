@@ -165,7 +165,7 @@ const serviceSchema = {
     price: "0",
     priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
-    url: "https://connect.shore.com/bookings/skinlux-pinzgau/services?locale=de",
+    url: "https://bodyshaping.skinlux.at/#anfrage",
   },
 };
 
