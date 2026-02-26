@@ -42,7 +42,7 @@
           Body Shaping Beratung
         </mj-text>
         <mj-text font-size="13px" color="#999999" padding-top="8px">
-          Eingegangen am {{datum}}
+          Eingegangen am {DATA_VARIABLE:datum}
         </mj-text>
       </mj-column>
     </mj-section>
@@ -61,7 +61,7 @@
           Name
         </mj-text>
         <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
-          {{kundenName}}
+          {DATA_VARIABLE:kundenName}
         </mj-text>
       </mj-column>
     </mj-section>
@@ -72,7 +72,7 @@
           E-Mail
         </mj-text>
         <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
-          <a href="mailto:{{kundenEmail}}" style="color: #111111; text-decoration: none;">{{kundenEmail}}</a>
+          <a href="mailto:{DATA_VARIABLE:kundenEmail}" style="color: #111111; text-decoration: none;">{DATA_VARIABLE:kundenEmail}</a>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -83,7 +83,7 @@
           Telefon
         </mj-text>
         <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
-          <a href="tel:{{kundenTelefon}}" style="color: #111111; text-decoration: none;">{{kundenTelefon}}</a>
+          <a href="tel:{DATA_VARIABLE:kundenTelefon}" style="color: #111111; text-decoration: none;">{DATA_VARIABLE:kundenTelefon}</a>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -94,7 +94,7 @@
           Interesse
         </mj-text>
         <mj-text css-class="value" font-size="16px" color="#111111" padding-top="2px" padding-bottom="20px">
-          {{kundenInteresse}}
+          {DATA_VARIABLE:kundenInteresse}
         </mj-text>
       </mj-column>
     </mj-section>
@@ -113,7 +113,7 @@
           Nachricht
         </mj-text>
         <mj-text font-size="15px" color="#333333" padding-top="8px" line-height="1.7">
-          {{kundenNachricht}}
+          {DATA_VARIABLE:kundenNachricht}
         </mj-text>
       </mj-column>
     </mj-section>
@@ -121,7 +121,7 @@
     <!-- CTA -->
     <mj-section background-color="#ffffff" padding="0 40px 32px 40px">
       <mj-column>
-        <mj-button background-color="#000000" color="#ffffff" font-size="11px" letter-spacing="2px" text-transform="uppercase" inner-padding="16px 32px" border-radius="0" href="mailto:{{kundenEmail}}?subject=Deine Body Shaping Anfrage bei Skinlux">
+        <mj-button background-color="#000000" color="#ffffff" font-size="11px" letter-spacing="2px" text-transform="uppercase" inner-padding="16px 32px" border-radius="0" href="mailto:{DATA_VARIABLE:kundenEmail}?subject=Deine Body Shaping Anfrage bei Skinlux">
           Kundin kontaktieren
         </mj-button>
       </mj-column>

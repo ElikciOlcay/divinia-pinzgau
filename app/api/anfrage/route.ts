@@ -58,7 +58,6 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      const errorData = await response.text();
       return NextResponse.json(
         { error: "Fehler beim Senden der Anfrage. Bitte versuche es erneut." },
         { status: 500 }
