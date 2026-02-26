@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "DIVINIA Eclibs",
     "Skinlux Saalfelden",
     "Skinlux Pinzgau",
-    "Koerperformung Salzburg",
+    "Körperformung Salzburg",
     "nicht-invasiv abnehmen",
     "Muskelaufbau ohne Training",
     "Lymphdrainage Saalfelden",
@@ -89,13 +89,13 @@ const organizationSchema = {
   name: "Skinlux Medical Beauty Studio Pinzgau",
   alternateName: ["Skinlux Saalfelden", "Skinlux Pinzgau"],
   description:
-    "Skinlux Medical Beauty Studio in Saalfelden bietet professionelles Body Shaping und Abnehmen ohne OP mit der DIVINIA Eclibs Weltneuheit. 5-in-1 Behandlung mit 7 Technologien fuer Fettreduktion, Hautstraffung und Muskelaufbau im Pinzgau.",
+    "Skinlux Medical Beauty Studio in Saalfelden bietet professionelles Body Shaping und Abnehmen ohne OP mit der DIVINIA Eclibs Weltneuheit. 5-in-1 Behandlung mit 7 Technologien für Fettreduktion, Hautstraffung und Muskelaufbau im Pinzgau.",
   url: "https://bodyshaping.skinlux.at",
   telephone: "+436644568454",
   email: "pinzgau@skinlux.at",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Leogangerstrasse 12/Top 1c",
+    streetAddress: "Leogangerstraße 12/Top 1c",
     addressLocality: "Saalfelden am Steinernen Meer",
     postalCode: "5760",
     addressRegion: "Salzburg",
@@ -134,22 +134,22 @@ const serviceSchema = {
     "Body Contouring Saalfelden",
     "Abnehmen ohne OP Pinzgau",
     "Fettreduktion Salzburg",
-    "Nicht-invasive Koerperformung",
+    "Nicht-invasive Körperformung",
   ],
   description:
-    "Die DIVINIA Eclibs ist eine revolutionaere 5-in-1 Body-Shaping-Behandlung, die 7 Technologien (Chip-Technologie, Radiofrequenz, Elektroporation, Kavitation, EMS, LED-Therapie und Vakuum) in einem Geraet vereint. In einer 30-minuetigen Sitzung werden gleichzeitig Fettreduktion (bis zu 30%), Hautstraffung, Muskelaufbau, Cellulite-Behandlung und Lymphdrainage durchgefuehrt. Die Behandlung ist schmerzfrei, erfordert keine Ausfallzeit und ist fuer alle Koerpertypen geeignet.",
+    "Die DIVINIA Eclibs ist eine revolutionäre 5-in-1 Body-Shaping-Behandlung, die 7 Technologien (Chip-Technologie, Radiofrequenz, Elektroporation, Kavitation, EMS, LED-Therapie und Vakuum) in einem Gerät vereint. In einer 30-minütigen Sitzung werden gleichzeitig Fettreduktion (bis zu 30%), Hautstraffung, Muskelaufbau, Cellulite-Behandlung und Lymphdrainage durchgeführt. Die Behandlung ist schmerzfrei, erfordert keine Ausfallzeit und ist für alle Körpertypen geeignet.",
   procedureType: "Non-invasive Body Contouring",
   howPerformed:
-    "7 Technologien wirken gleichzeitig auf das Behandlungsareal: Radiofrequenz zur Hautstraffung, Kavitation zur Fettzellenreduktion, EMS zum Muskelaufbau, Elektroporation fuer Wirkstofftransport, LED-Therapie zur Regeneration, Vakuum fuer Lymphdrainage und eine eigens entwickelte Chip-Technologie als Herzsteueck.",
+    "7 Technologien wirken gleichzeitig auf das Behandlungsareal: Radiofrequenz zur Hautstraffung, Kavitation zur Fettzellenreduktion, EMS zum Muskelaufbau, Elektroporation für Wirkstofftransport, LED-Therapie zur Regeneration, Vakuum für Lymphdrainage und eine eigens entwickelte Chip-Technologie als Herzstück.",
   preparation:
-    "Kostenlose Erstberatung mit individueller Analyse und Behandlungsplanung. Keine spezielle Vorbereitung noetig.",
+    "Kostenlose Erstberatung mit individueller Analyse und Behandlungsplanung. Keine spezielle Vorbereitung nötig.",
   followup:
-    "Keine Ausfallzeit. Empfohlen werden 6-10 Sitzungen im Abstand von 3-5 Tagen fuer optimale Ergebnisse.",
+    "Keine Ausfallzeit. Empfohlen werden 6-10 Sitzungen im Abstand von 3-5 Tagen für optimale Ergebnisse.",
   indication: [
-    "Uebermaessiges Koerperfett",
+    "Übermäßiges Körperfett",
     "Erschlaffte Haut",
     "Cellulite",
-    "Mangelnde Koerperdefinition",
+    "Mangelnde Körperdefinition",
     "Lymphstau",
     "Wunsch nach Abnehmen ohne Operation",
   ],
@@ -161,7 +161,7 @@ const serviceSchema = {
     "@type": "Offer",
     name: "Kostenlose Erstberatung Body Shaping",
     description:
-      "Unverbindliche Beratung mit individueller Koerperanalyse und Behandlungsplanung",
+      "Unverbindliche Beratung mit individueller Körperanalyse und Behandlungsplanung",
     price: "0",
     priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
@@ -178,7 +178,7 @@ const faqSchema = {
       name: "Wie schnell sehe ich Ergebnisse beim Body Shaping mit DIVINIA Eclibs?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Bereits nach der ersten Behandlung sind messbare Veraenderungen moeglich. Viele Kunden berichten von sofort spuerbarer Hautstraffung. Optimale Ergebnisse bei der Fettreduktion zeigen sich nach 6-8 Sitzungen.",
+        text: "Bereits nach der ersten Behandlung sind messbare Veränderungen möglich. Viele Kunden berichten von sofort spürbarer Hautstraffung. Optimale Ergebnisse bei der Fettreduktion zeigen sich nach 6-8 Sitzungen.",
       },
     },
     {
@@ -186,7 +186,7 @@ const faqSchema = {
       name: "Ist Abnehmen ohne OP mit DIVINIA Eclibs schmerzhaft?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nein. Die Behandlung ist schmerzfrei und wird von den meisten Kunden als angenehm warm und entspannend empfunden. Es sind keine Betaeubung und keine Nadeln noetig.",
+        text: "Nein. Die Behandlung ist schmerzfrei und wird von den meisten Kunden als angenehm warm und entspannend empfunden. Es sind keine Betäubung und keine Nadeln nötig.",
       },
     },
     {
@@ -199,10 +199,10 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "Fuer wen ist die DIVINIA Eclibs Body-Shaping-Behandlung geeignet?",
+      name: "Für wen ist die DIVINIA Eclibs Body-Shaping-Behandlung geeignet?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Behandlung eignet sich fuer alle, die gezielt Fett reduzieren, Haut straffen oder Muskeln aufbauen moechten -- unabhaengig von Alter oder Geschlecht. In der kostenlosen Erstberatung pruefen wir die individuelle Eignung.",
+        text: "Die Behandlung eignet sich für alle, die gezielt Fett reduzieren, Haut straffen oder Muskeln aufbauen möchten -- unabhängig von Alter oder Geschlecht. In der kostenlosen Erstberatung prüfen wir die individuelle Eignung.",
       },
     },
     {
@@ -210,7 +210,7 @@ const faqSchema = {
       name: "Wie viele Body-Shaping-Behandlungen brauche ich zum Abnehmen?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Das besprechen wir individuell in der kostenlosen Erstberatung. Fuer optimale Ergebnisse bei der Fettreduktion werden 6-10 Sitzungen im Abstand von 3-5 Tagen empfohlen.",
+        text: "Das besprechen wir individuell in der kostenlosen Erstberatung. Für optimale Ergebnisse bei der Fettreduktion werden 6-10 Sitzungen im Abstand von 3-5 Tagen empfohlen.",
       },
     },
     {
@@ -218,7 +218,7 @@ const faqSchema = {
       name: "Was kostet Body Shaping bei Skinlux in Saalfelden?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Erstberatung ist kostenlos und unverbindlich. Die Preise fuer die Behandlung besprechen wir persoenlich, da sie vom individuellen Behandlungsplan abhaengen. Buche jetzt deine kostenlose Beratung.",
+        text: "Die Erstberatung ist kostenlos und unverbindlich. Die Preise für die Behandlung besprechen wir persönlich, da sie vom individuellen Behandlungsplan abhängen. Buche jetzt deine kostenlose Beratung.",
       },
     },
     {
@@ -226,7 +226,7 @@ const faqSchema = {
       name: "Wo kann ich in Salzburg ohne OP abnehmen?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Skinlux Medical Beauty Studio in Saalfelden (Pinzgau) bietet mit der DIVINIA Eclibs die modernste nicht-invasive Body-Shaping-Behandlung in Salzburg. Wir sind erreichbar fuer Kunden aus Saalfelden, Zell am See, Leogang, Mittersill und dem gesamten Pinzgau.",
+        text: "Skinlux Medical Beauty Studio in Saalfelden (Pinzgau) bietet mit der DIVINIA Eclibs die modernste nicht-invasive Body-Shaping-Behandlung in Salzburg. Wir sind erreichbar für Kunden aus Saalfelden, Zell am See, Leogang, Mittersill und dem gesamten Pinzgau.",
       },
     },
   ],
@@ -261,7 +261,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </head>
-      <body className={`${lato.variable} ${playfair.variable} antialiased`}>
+      <body className={`${lato.variable} ${playfair.variable} antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
