@@ -18,7 +18,6 @@ import {
   ArrowRight,
   Shield,
   Sparkles,
-  Play,
 } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
@@ -62,29 +61,39 @@ const bewertungen = [
 
 const faq = [
   {
-    frage: "Wie schnell sehe ich Ergebnisse?",
+    frage: "Wie schnell sehe ich Ergebnisse beim Abnehmen?",
     antwort:
-      "Bereits nach der ersten Behandlung sind messbare Veraenderungen moeglich. Optimale Ergebnisse zeigen sich nach 6-8 Sitzungen.",
+      "Bereits nach der ersten Body-Shaping-Sitzung mit der DIVINIA Eclibs sind messbare Veraenderungen moeglich. Viele Kunden berichten von sofort spuerbarer Hautstraffung. Optimale Ergebnisse bei der Fettreduktion zeigen sich nach 6-8 Sitzungen im Abstand von 3-5 Tagen.",
   },
   {
-    frage: "Ist die Behandlung schmerzhaft?",
+    frage: "Ist Abnehmen ohne OP schmerzhaft?",
     antwort:
-      "Nein. Die meisten Kunden empfinden die Behandlung als angenehm warm und entspannend.",
+      "Nein, die DIVINIA Eclibs Behandlung ist komplett schmerzfrei. Die meisten Kunden empfinden die Sitzung als angenehm warm und entspannend -- aehnlich wie eine Massage. Es werden keine Nadeln, kein Skalpell und keine Betaeubung benoetigt.",
   },
   {
-    frage: "Wie lange dauert eine Sitzung?",
+    frage: "Wie lange dauert eine Body-Shaping-Sitzung?",
     antwort:
-      "Ca. 30-45 Minuten. Du kannst direkt danach wieder deinem Alltag nachgehen -- keine Ausfallzeit.",
+      "Eine Sitzung dauert ca. 30-45 Minuten. Es gibt keinerlei Ausfallzeit -- du kannst direkt danach wieder deinem Alltag nachgehen, Sport treiben oder arbeiten.",
   },
   {
-    frage: "Fuer wen ist die Behandlung geeignet?",
+    frage: "Fuer wen ist Body Shaping mit DIVINIA Eclibs geeignet?",
     antwort:
-      "Fuer alle, die gezielt Fett reduzieren, Haut straffen oder Muskeln aufbauen moechten -- unabhaengig von Alter oder Geschlecht.",
+      "Die Behandlung eignet sich fuer alle, die gezielt Fett reduzieren, Haut straffen oder Muskeln aufbauen moechten -- unabhaengig von Alter oder Geschlecht. In der kostenlosen Erstberatung bei Skinlux Saalfelden pruefen wir deine individuelle Eignung und erstellen einen persoenlichen Behandlungsplan.",
   },
   {
-    frage: "Wie viele Behandlungen brauche ich?",
+    frage: "Wie viele Behandlungen brauche ich zum Abnehmen?",
     antwort:
-      "Das besprechen wir in der kostenlosen Erstberatung. Empfohlen werden 6-10 Sitzungen.",
+      "Das besprechen wir individuell in deiner kostenlosen Erstberatung. Fuer nachhaltige Fettreduktion empfehlen wir 6-10 Sitzungen. Jede Sitzung baut auf der vorherigen auf -- die 7 Technologien der DIVINIA Eclibs arbeiten dabei synergistisch fuer optimale Ergebnisse.",
+  },
+  {
+    frage: "Was kostet Body Shaping bei Skinlux?",
+    antwort:
+      "Die Erstberatung ist komplett kostenlos und unverbindlich. Die Behandlungspreise besprechen wir persoenlich, da sie vom individuellen Plan abhaengen. Buche einfach deinen Beratungstermin -- wir nehmen uns Zeit fuer dich.",
+  },
+  {
+    frage: "Wo finde ich Body Shaping im Pinzgau?",
+    antwort:
+      "Skinlux Medical Beauty Studio befindet sich in der Leogangerstrasse 12/Top 1c in 5760 Saalfelden am Steinernen Meer. Wir sind gut erreichbar fuer Kunden aus Zell am See, Leogang, Mittersill, Lofer und dem gesamten Pinzgau und Salzburg.",
   },
 ];
 
@@ -224,7 +233,7 @@ export default function DiviniaLanding() {
         >
           <Image
             src="/images/divinia/behandlung.jpg"
-            alt="DIVINIA Eclibs Body Contouring Behandlung"
+            alt="Abnehmen ohne OP - DIVINIA Eclibs Body Shaping Behandlung bei Skinlux Saalfelden Pinzgau"
             fill
             className="object-cover"
             priority
@@ -243,7 +252,7 @@ export default function DiviniaLanding() {
               <div className="inline-flex items-center gap-2 mb-6 md:mb-8 bg-white/10 backdrop-blur-sm px-4 py-2">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                 <span className="text-[10px] md:text-[11px] text-white/90 tracking-[0.2em] uppercase font-light">
-                  Limitierte Plaetze verfuegbar
+                  Body Shaping Weltneuheit im Pinzgau
                 </span>
               </div>
 
@@ -254,8 +263,8 @@ export default function DiviniaLanding() {
               </h1>
 
               <p className="text-lg md:text-xl text-white/70 font-light mb-10 md:mb-12 max-w-lg leading-relaxed">
-                5 Behandlungen in einer. 7 Technologien. 0 Ausfallzeit.
-                Die Weltneuheit jetzt in Saalfelden.
+                Abnehmen ohne OP. 5 Behandlungen in einer Sitzung.
+                7 Technologien. 0 Ausfallzeit. Jetzt in Saalfelden.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -330,8 +339,8 @@ export default function DiviniaLanding() {
                 <span className="text-gray-300">0 Kompromisse.</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed">
-                Vergiss einzelne Termine fuer Fett, Cellulite, Straffung, Muskeln und Lymphe.
-                Die DIVINIA Eclibs macht alles gleichzeitig.
+                Vergiss Diaeten und einzelne Behandlungen. Die DIVINIA Eclibs
+                vereint Fettreduktion, Straffung, Muskelaufbau, Cellulite- und Lymphbehandlung.
               </p>
             </motion.div>
           </div>
@@ -380,7 +389,7 @@ export default function DiviniaLanding() {
           <div className="relative aspect-square md:aspect-auto">
             <Image
               src="/images/divinia/geraet.jpg"
-              alt="DIVINIA Eclibs Technologie"
+              alt="DIVINIA Eclibs Body Shaping Technologie - 7 Technologien fuer Abnehmen ohne OP in Saalfelden"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -477,7 +486,7 @@ export default function DiviniaLanding() {
             <div className="relative aspect-4/5 md:aspect-3/4 overflow-hidden order-1 md:order-2">
               <Image
                 src="/images/divinia/ergebnis.jpg"
-                alt="DIVINIA Eclibs Ergebnisse"
+                alt="Body Shaping Ergebnisse - Abnehmen und Hautstraffung mit DIVINIA Eclibs bei Skinlux Pinzgau"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -542,7 +551,7 @@ export default function DiviniaLanding() {
           >
             <span className="inline-flex items-center gap-2 mb-6 bg-white/10 px-4 py-2 text-[10px] tracking-[0.2em] uppercase">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Noch wenige Plaetze diese Woche
+              Limitierte Plaetze verfuegbar
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl text-white mb-6">
               Deine Beratung ist
@@ -550,8 +559,8 @@ export default function DiviniaLanding() {
               <span className="text-white/50">kostenlos.</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-400 font-light max-w-lg mx-auto mb-10">
-              Unverbindlich. Persoenlich. Und der erste Schritt
-              zu deinem neuen Koerpergefuehl.
+              Unverbindlich. Persoenlich. Dein individueller
+              Body-Shaping-Plan fuer sichtbare Ergebnisse.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
