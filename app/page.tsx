@@ -86,7 +86,7 @@ const faq = [
   {
     frage: "Was kostet Body Shaping bei Skinlux?",
     antwort:
-      "Die Erstberatung ist komplett kostenlos und unverbindlich. Die Behandlungspreise besprechen wir persönlich, da sie vom individuellen Plan abhängen. Buche einfach deinen Beratungstermin -- wir nehmen uns Zeit für dich.",
+      "Die Probebehandlung inkl. Lymphdrainage kostet 79 €, nur Lymphdrainage 39 €. Eine reguläre Einzelbehandlung inkl. Lymphdrainage 179 €, nur Lymphdrainage 79 €. Für nachhaltige Ergebnisse empfehlen wir unsere Blöcke: 10x inkl. Lymph ab 1.399 €, 20x ab 1.999 €. Als Eröffnungsangebot gibt es beim 10er Block 1 Behandlung gratis, beim 20er Block 2 Behandlungen gratis. Die Erstberatung ist immer kostenlos.",
   },
   {
     frage: "Wo finde ich Body Shaping im Pinzgau?",
@@ -1120,17 +1120,18 @@ export default function DiviniaLanding() {
               Investition in dich
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl mb-4">
-              Deine Verwandlung
+              Transparente
               <br />
-              <span className="text-gray-300">hat einen Preis.</span>
+              <span className="text-gray-300">Preise.</span>
             </h2>
             <p className="text-lg text-gray-500 max-w-lg mx-auto">
-              Transparent. Fair. Und die Erstberatung ist immer kostenlos.
+              Alle Preise auf einen Blick &ndash; inkl. MwSt. und ohne versteckte Kosten.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-            {/* Einzelbehandlung */}
+          {/* Probebehandlung + Pro Behandlung */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-6">
+            {/* Probebehandlung */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1142,100 +1143,229 @@ export default function DiviniaLanding() {
                   className="text-2xl md:text-3xl mb-2"
                   style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
                 >
-                  Einzelbehandlung
+                  Probebehandlung
                 </h3>
-                <p className="text-gray-500 text-sm">
-                  Ideal zum Kennenlernen
-                </p>
+                <p className="text-gray-500 text-sm">Ideal zum Kennenlernen</p>
               </div>
-              <div className="mb-8">
-                <span
-                  className="text-4xl md:text-5xl"
-                  style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
-                >
-                  ab 149
-                </span>
-                <span className="text-lg text-gray-400 ml-1">&euro;</span>
-                <span className="text-sm text-gray-500 ml-2">pro Sitzung</span>
+              <div className="space-y-0">
+                <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                  <span className="text-gray-600 text-sm">inkl. Lymphdrainage</span>
+                  <div className="text-right">
+                    <span
+                      className="text-3xl md:text-4xl"
+                      style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                    >
+                      79
+                    </span>
+                    <span className="text-base text-gray-400 ml-1">&euro;</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between py-4">
+                  <span className="text-gray-600 text-sm">nur Lymphdrainage</span>
+                  <div className="text-right">
+                    <span
+                      className="text-3xl md:text-4xl"
+                      style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                    >
+                      39
+                    </span>
+                    <span className="text-base text-gray-400 ml-1">&euro;</span>
+                  </div>
+                </div>
               </div>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "30-45 Min. Behandlung",
-                  "Alle 7 Technologien",
-                  "5-in-1 Wirkung",
-                  "Keine Ausfallzeit",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-700">
-                    <Check className="w-4 h-4 text-black shrink-0" strokeWidth={2} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
               <button
                 onClick={scrollToForm}
-                className="block w-full text-center py-4 border border-black text-black text-[11px] tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all cursor-pointer"
+                className="block w-full text-center mt-6 py-4 border border-black text-black text-[11px] tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all cursor-pointer"
               >
                 Termin buchen
               </button>
             </motion.div>
 
-            {/* 10er Paket */}
+            {/* Pro Behandlung */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-black text-white p-8 md:p-10 relative"
+              className="bg-white p-8 md:p-10 border border-gray-200"
             >
-              <div className="absolute top-0 right-0 bg-white text-black px-4 py-1.5 text-[10px] tracking-[0.2em] uppercase font-medium">
-                Beste Ergebnisse
-              </div>
               <div className="mb-6">
                 <h3
                   className="text-2xl md:text-3xl mb-2"
                   style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
                 >
-                  10er Paket
+                  Pro Behandlung
                 </h3>
-                <p className="text-gray-300 text-sm">
-                  Für nachhaltige Ergebnisse
-                </p>
+                <p className="text-gray-500 text-sm">Einzelsitzung</p>
               </div>
-              <div className="mb-2">
-                <span
-                  className="text-4xl md:text-5xl text-white"
-                  style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
-                >
-                  ab 1.190
-                </span>
-                <span className="text-lg text-gray-400 ml-1">&euro;</span>
+              <div className="space-y-0">
+                <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                  <span className="text-gray-600 text-sm">inkl. Lymphdrainage</span>
+                  <div className="text-right">
+                    <span
+                      className="text-3xl md:text-4xl"
+                      style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                    >
+                      179
+                    </span>
+                    <span className="text-base text-gray-400 ml-1">&euro;</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between py-4">
+                  <span className="text-gray-600 text-sm">nur Lymphdrainage</span>
+                  <div className="text-right">
+                    <span
+                      className="text-3xl md:text-4xl"
+                      style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                    >
+                      79
+                    </span>
+                    <span className="text-base text-gray-400 ml-1">&euro;</span>
+                  </div>
+                </div>
               </div>
-              <p className="text-sm text-gray-400 mb-8">
-                statt 1.490 &euro; &bull; du sparst über 300 &euro;
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "10 Behandlungen zum Vorteilspreis",
-                  "Individueller Behandlungsplan",
-                  "Alle 7 Technologien pro Sitzung",
-                  "Messbare, nachhaltige Ergebnisse",
-                  "Persönliche Betreuung",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-200">
-                    <Check className="w-4 h-4 text-white shrink-0" strokeWidth={2} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
               <button
                 onClick={scrollToForm}
-                className="block w-full text-center py-4 bg-white text-black text-[11px] tracking-[0.2em] uppercase hover:bg-gray-100 transition-all cursor-pointer"
+                className="block w-full text-center mt-6 py-4 border border-black text-black text-[11px] tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all cursor-pointer"
               >
-                Beratung vereinbaren
-                <ArrowRight className="w-3.5 h-3.5 inline ml-2" />
+                Termin buchen
               </button>
             </motion.div>
           </div>
+
+          {/* Blöcke */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="max-w-4xl mx-auto bg-black text-white p-8 md:p-10 mb-6"
+          >
+            <div className="mb-8">
+              <h3
+                className="text-2xl md:text-3xl mb-2"
+                style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+              >
+                Blöcke
+              </h3>
+              <p className="text-gray-400 text-sm">Für nachhaltige Ergebnisse &ndash; zum besten Preis</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              <div>
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-5">
+                  inkl. Lymphdrainage
+                </p>
+                <div className="space-y-0">
+                  {[
+                    { label: "10x", price: "1.399" },
+                    { label: "20x", price: "1.999" },
+                    { label: "Jahresabo", price: "4.999" },
+                  ].map((item, i, arr) => (
+                    <div
+                      key={item.label}
+                      className={`flex items-center justify-between py-4 ${i < arr.length - 1 ? "border-b border-gray-700" : ""}`}
+                    >
+                      <span className="text-gray-300">{item.label}</span>
+                      <div>
+                        <span
+                          className="text-2xl text-white"
+                          style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                        >
+                          {item.price}
+                        </span>
+                        <span className="text-gray-400 ml-1">&euro;</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-5">
+                  nur Lymphdrainage
+                </p>
+                <div className="space-y-0">
+                  {[
+                    { label: "10x", price: "599" },
+                    { label: "20x", price: "999" },
+                  ].map((item, i, arr) => (
+                    <div
+                      key={item.label}
+                      className={`flex items-center justify-between py-4 ${i < arr.length - 1 ? "border-b border-gray-700" : ""}`}
+                    >
+                      <span className="text-gray-300">{item.label}</span>
+                      <div>
+                        <span
+                          className="text-2xl text-white"
+                          style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                        >
+                          {item.price}
+                        </span>
+                        <span className="text-gray-400 ml-1">&euro;</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 pt-6 border-t border-gray-700 text-center">
+              <button
+                onClick={scrollToForm}
+                className="inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-4 text-[11px] tracking-[0.2em] uppercase hover:bg-gray-100 transition-all cursor-pointer"
+              >
+                Paket anfragen
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Eröffnungsangebot */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="max-w-4xl mx-auto border-2 border-black bg-white p-8 md:p-10"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <span className="bg-black text-white text-[10px] tracking-[0.2em] uppercase px-3 py-1.5">
+                Eröffnungsangebot
+              </span>
+            </div>
+            <h3
+              className="text-2xl md:text-3xl mb-2"
+              style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+            >
+              Jetzt Bonus sichern
+            </h3>
+            <p className="text-gray-500 text-sm mb-8">Exklusiv für die Eröffnungsphase</p>
+            <div className="grid md:grid-cols-2 gap-5">
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 bg-black shrink-0 flex items-center justify-center mt-0.5">
+                  <Check className="w-3.5 h-3.5 text-white" strokeWidth={2} />
+                </div>
+                <div>
+                  <p className="text-gray-800">10er Block</p>
+                  <p className="text-sm text-gray-500">+ 1 Behandlung gratis</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-6 h-6 bg-black shrink-0 flex items-center justify-center mt-0.5">
+                  <Check className="w-3.5 h-3.5 text-white" strokeWidth={2} />
+                </div>
+                <div>
+                  <p className="text-gray-800">20er Block</p>
+                  <p className="text-sm text-gray-500">+ 2 Behandlungen gratis</p>
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={scrollToForm}
+              className="block w-full text-center mt-8 py-4 bg-black text-white text-[11px] tracking-[0.2em] uppercase hover:bg-gray-900 transition-all cursor-pointer"
+            >
+              Angebot sichern
+              <ArrowRight className="w-3.5 h-3.5 inline ml-2" />
+            </button>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -1243,10 +1373,7 @@ export default function DiviniaLanding() {
             viewport={{ once: true }}
             className="text-center text-sm text-gray-500 mt-8 max-w-lg mx-auto"
           >
-            Alle Preise inkl. MwSt. Die genauen Preise besprechen wir
-            in deiner kostenlosen Erstberatung -- abgestimmt auf deinen
-            individuellen Behandlungsplan.
-          
+            Alle Preise inkl. MwSt. Die Erstberatung ist immer kostenlos und unverbindlich.
           </motion.p>
         </div>
       </section>
