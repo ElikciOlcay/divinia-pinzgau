@@ -86,7 +86,7 @@ const faq = [
   {
     frage: "Was kostet Body Shaping bei Skinlux?",
     antwort:
-      "Die Probebehandlung inkl. Lymphdrainage kostet 79 €, nur Lymphdrainage 39 €. Eine reguläre Einzelbehandlung inkl. Lymphdrainage 179 €, nur Lymphdrainage 79 €. Für nachhaltige Ergebnisse empfehlen wir unsere Blöcke: 10x inkl. Lymph ab 1.399 €, 20x ab 1.999 €. Als Eröffnungsangebot gibt es beim 10er Block 1 Behandlung gratis, beim 20er Block 2 Behandlungen gratis. Die Erstberatung ist immer kostenlos.",
+      "Eine Einzelbehandlung inkl. Lymphdrainage kostet 179 €, nur Lymphdrainage 79 €. Für nachhaltige Ergebnisse empfehlen wir unsere Blöcke: 10x inkl. Lymph ab 1.399 €, 20x ab 1.999 €, Jahresabo 4.999 €. Als Eröffnungsangebot gibt es beim 10er Block 1 Behandlung gratis, beim 20er Block 2 Behandlungen gratis. Die Erstberatung ist immer kostenlos.",
   },
   {
     frage: "Wo finde ich Body Shaping im Pinzgau?",
@@ -1165,64 +1165,12 @@ export default function DiviniaLanding() {
             </p>
           </motion.div>
 
-          {/* Probebehandlung + Pro Behandlung */}
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-6">
-            {/* Probebehandlung */}
+          {/* Pro Behandlung */}
+          <div className="max-w-4xl mx-auto mb-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 md:p-10 border border-gray-200"
-            >
-              <div className="mb-6">
-                <h3
-                  className="text-2xl md:text-3xl mb-2"
-                  style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
-                >
-                  Probebehandlung
-                </h3>
-                <p className="text-gray-500 text-sm">Ideal zum Kennenlernen</p>
-              </div>
-              <div className="space-y-0">
-                <div className="flex items-center justify-between py-4 border-b border-gray-100">
-                  <span className="text-gray-600 text-sm">inkl. Lymphdrainage</span>
-                  <div className="text-right">
-                    <span
-                      className="text-3xl md:text-4xl"
-                      style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
-                    >
-                      79
-                    </span>
-                    <span className="text-base text-gray-400 ml-1">&euro;</span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between py-4">
-                  <span className="text-gray-600 text-sm">nur Lymphdrainage</span>
-                  <div className="text-right">
-                    <span
-                      className="text-3xl md:text-4xl"
-                      style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
-                    >
-                      39
-                    </span>
-                    <span className="text-base text-gray-400 ml-1">&euro;</span>
-                  </div>
-                </div>
-              </div>
-              <button
-                onClick={scrollToForm}
-                className="block w-full text-center mt-6 py-4 border border-black text-black text-[11px] tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all cursor-pointer"
-              >
-                Termin buchen
-              </button>
-            </motion.div>
-
-            {/* Pro Behandlung */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
               className="bg-white p-8 md:p-10 border border-gray-200"
             >
               <div className="mb-6">
