@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 const LOOPS_API_KEY = process.env.LOOPS_API_KEY || "";
 const LOOPS_TRANSACTIONAL_ID = process.env.LOOPS_TRANSACTIONAL_ID || "";
+const LOOPS_CUSTOMER_TRANSACTIONAL_ID = process.env.LOOPS_CUSTOMER_TRANSACTIONAL_ID || "";
 const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "pinzgau@skinlux.at";
 
 interface AnfrageBody {
@@ -10,6 +11,17 @@ interface AnfrageBody {
   phone: string;
   message?: string;
   interesse?: string;
+}
+
+async function sendLoopsEmail(transactionalId: string, email: string, dataVariables: Record<string, string>) {
+  return fetch("https://app.loops.so/api/v1/transactional", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${LOOPS_API_KEY}`,
+    },
+    body: JSON.stringify({ transactionalId, email, dataVariables }),
+  });
 }
 
 export async function POST(request: Request) {
@@ -31,37 +43,41 @@ export async function POST(request: Request) {
       );
     }
 
-    const response = await fetch("https://app.loops.so/api/v1/transactional", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${LOOPS_API_KEY}`,
-      },
-      body: JSON.stringify({
-        transactionalId: LOOPS_TRANSACTIONAL_ID,
-        email: NOTIFICATION_EMAIL,
-        dataVariables: {
-          kundenName: body.name,
-          kundenEmail: body.email,
-          kundenTelefon: body.phone,
-          kundenNachricht: body.message || "Keine Nachricht angegeben",
-          kundenInteresse: body.interesse || "Body Shaping Beratung",
-          datum: new Date().toLocaleDateString("de-AT", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-        },
-      }),
+    const datum = new Date().toLocaleDateString("de-AT", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
 
-    if (!response.ok) {
+    // Interne Benachrichtigung ans Studio
+    const notificationResponse = await sendLoopsEmail(
+      LOOPS_TRANSACTIONAL_ID,
+      NOTIFICATION_EMAIL,
+      {
+        kundenName: body.name,
+        kundenEmail: body.email,
+        kundenTelefon: body.phone,
+        kundenNachricht: body.message || "Keine Nachricht angegeben",
+        kundenInteresse: body.interesse || "Body Shaping Beratung",
+        datum,
+      }
+    );
+
+    if (!notificationResponse.ok) {
       return NextResponse.json(
         { error: "Fehler beim Senden der Anfrage. Bitte versuche es erneut." },
         { status: 500 }
       );
+    }
+
+    // Bestätigungsmail an den Kunden (nur wenn Template-ID gesetzt)
+    if (LOOPS_CUSTOMER_TRANSACTIONAL_ID) {
+      await sendLoopsEmail(LOOPS_CUSTOMER_TRANSACTIONAL_ID, body.email, {
+        kundenName: body.name,
+        kundenInteresse: body.interesse || "Body Shaping Beratung",
+      });
     }
 
     return NextResponse.json({ success: true });
