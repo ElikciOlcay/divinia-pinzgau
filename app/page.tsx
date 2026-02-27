@@ -1041,6 +1041,42 @@ export default function DiviniaLanding() {
         </div>
       </section>
 
+      {/* FOTO-GALERIE */}
+      <section className="bg-white">
+        <div className="grid md:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative aspect-[3/2] overflow-hidden"
+          >
+            <Image
+              src="/images/divinia/behandlung2.jpg"
+              alt="DIVINIA Eclibs Behandlung - Fettreduktion und Körperstraffung bei Skinlux Saalfelden"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="relative aspect-[3/2] overflow-hidden"
+          >
+            <Image
+              src="/images/divinia/behandlung3.jpg"
+              alt="DIVINIA Eclibs Gerät - Body Shaping Technologie bei Skinlux Pinzgau"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* EIGNUNGS-CHECK -- Interaktives Quiz */}
       <EignungsCheck />
 
